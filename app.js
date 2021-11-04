@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
   const qwerty = document.getElementById('qwerty');
-  const phrase = document.getElementById('phrase');
+  const phrase = document.querySelector('#phrase ul');
   let missed = 0;
   const overlay = document.querySelector('.start');
   const characterList = document.querySelector('ul');
@@ -33,20 +33,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
 //Takes phrase and creates a list tag for each letter and space. List items are then appended to the ul
   function addPhraseToDisplay(arr) {
-    const ul = document.querySelector('#phrase ul');
     for (let i = 0; i<arr.length; i++) {
       const li = document.createElement('li');
       let letter = arr[i];
       if (letter !== ' ') {
         li.innerHTML = letter;
         li.className = 'letter';
-        ul.appendChild(li);
+        phrase.appendChild(li);
       } else {
         li.className = 'space';
-        ul.appendChild(li);
+        phrase.appendChild(li);
       }
     }
-    return ul;
+    return phrase;
   }
 
 //Verify if selected letter is in the phrase and changes displays the correct letter.
